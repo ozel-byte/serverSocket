@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+   <children>
+      <Text layoutX="355.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
+      <Text fx:id="ganadosServer" layoutX="565.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
+      <Text fx:id="nameUser" fill="#2265f5" layoutX="356.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ozel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#174be8" layoutX="551.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="servidor">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ListView fx:id="listmsj" layoutY="51.0" prefHeight="364.0" prefWidth="282.0" />
+      <TextField fx:id="campomsj" layoutY="414.0" prefHeight="45.0" prefWidth="180.0" promptText="write a message" style="-fx-background-color: #fff;" />
+      <Button layoutX="180.0" layoutY="414.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #206aec;" text="enviar" textFill="WHITE" />
+      <Button layoutX="309.0" layoutY="409.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: #5ee775;" text="finalizar turno" textFill="WHITE" />
+      <CheckBox fx:id="checkO" layoutX="571.0" layoutY="417.0" mnemonicParsing="false" text="o" />
+      <CheckBox fx:id="checkx" layoutX="624.0" layoutY="417.0" mnemonicParsing="false" text="x" />
+      <Label fx:id="msjTurno" alignment="CENTER" layoutX="97.0" layoutY="12.0" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #2dc915;" text="Tu Turno" textFill="WHITE" visible="false" />
+      <Pane fx:id="areajuego" layoutX="355.0" layoutY="60.0" prefHeight="335.0" prefWidth="310.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
+         <children>
+            <Line endX="199.0" layoutX="111.0" layoutY="107.0" startX="-111.0" stroke="#8a8888" />
+            <Line endX="199.0" layoutX="111.0" layoutY="217.0" startX="-111.0" stroke="#838383" />
+            <Line endX="-69.0" endY="-51.0" layoutX="168.0" layoutY="50.0" startX="-69.0" startY="284.0" stroke="#b2b2b2" />
+            <Line endX="-69.0" endY="-51.0" layoutX="276.0" layoutY="53.0" startX="-69.0" startY="278.0" stroke="#909090" />
+            <Text fx:id="valorO1" layoutX="20.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX1" layoutX="24.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO2" layoutX="129.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO5" layoutX="129.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO3" layoutX="233.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO4" layoutX="20.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO8" layoutX="129.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO6" layoutX="233.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO7" layoutX="20.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorO9" layoutX="233.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" visible="false">
+               <font>
+                  <Font size="65.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX2" layoutX="133.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX3" layoutX="237.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX6" layoutX="237.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX9" layoutX="237.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX8" layoutX="133.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX7" layoutX="24.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX4" layoutX="24.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Text fx:id="valorX5" layoutX="133.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X" visible="false">
+               <font>
+                  <Font size="63.0" />
+               </font>
+            </Text>
+            <Pane fx:id="cuadricula1" layoutY="-1.0" prefHeight="108.0" prefWidth="94.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula2" layoutX="105.0" layoutY="-1.0" prefHeight="108.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula3" layoutX="209.0" layoutY="-1.0" prefHeight="108.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula5" layoutX="105.0" layoutY="110.0" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula4" layoutY="111.0" prefHeight="99.0" prefWidth="94.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula6" layoutX="209.0" layoutY="110.0" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula7" layoutY="225.0" prefHeight="99.0" prefWidth="94.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula8" layoutX="105.0" layoutY="225.0" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+            <Pane fx:id="cuadricula9" layoutX="209.0" layoutY="225.0" prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: #fff;" />
+         </children>
+         <effect>
+            <DropShadow height="39.21" radius="19.105" spread="0.11" width="39.21">
+               <color>
+                  <Color red="0.75" green="0.75" blue="0.75" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+      <AnchorPane fx:id="fondoloading" layoutX="-2.0" layoutY="-2.0" prefHeight="465.0" prefWidth="695.0" style="-fx-background-color: #fff;">
+         <children>
+            <Text layoutX="200.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esperando Usuario">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.13223379850387573" green="0.09200000017881393" blue="0.9200000166893005" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.359649121761322" green="0.5653508901596069" blue="0.9473684430122375" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
+            <ProgressIndicator layoutX="433.0" layoutY="219.0" prefHeight="28.0" prefWidth="37.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
