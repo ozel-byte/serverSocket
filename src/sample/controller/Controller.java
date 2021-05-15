@@ -170,7 +170,7 @@ public class Controller implements Observer {
 
     public void enviar(){
         try {
-            Socket socket =  new Socket("192.168.0.11",3002);
+            Socket socket =  new Socket("ip",3002);
             DataOutputStream data = new DataOutputStream(socket.getOutputStream());
             turno.setText("Turno del otro usuario");
             turno.setFill(Color.GREEN);
@@ -237,7 +237,7 @@ public class Controller implements Observer {
             valorX.setVisible(false);
             cuadricula.setVisible(false);
             try {
-                Socket socket = new Socket("192.168.0.11",3003);
+                Socket socket = new Socket("ip",3003);
                 DataOutputStream dataPosicion = new DataOutputStream(socket.getOutputStream());
                 dataPosicion.writeUTF(valorO.getId());
                 dataPosicion.close();
@@ -251,7 +251,7 @@ public class Controller implements Observer {
             valorX.setVisible(true);
             cuadricula.setVisible(false);
             try {
-                Socket socket = new Socket("192.168.0.11",3003);
+                Socket socket = new Socket("ip",3003);
                 DataOutputStream dataPosicion = new DataOutputStream(socket.getOutputStream());
                 dataPosicion.writeUTF(valorX.getId());
                 dataPosicion.close();
