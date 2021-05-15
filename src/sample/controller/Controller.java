@@ -219,7 +219,7 @@ public class Controller implements Observer {
 
     public void sendDataCliente(String valor){
         try {
-            Socket socket =  new Socket("192.168.0.11",3004);
+            Socket socket =  new Socket("ip",3004);
             DataOutputStream data = new DataOutputStream(socket.getOutputStream());
             msjTurno.setText("Tu turno Acabo");
             msjTurno.setStyle("-fx-background-color: #C70039");
