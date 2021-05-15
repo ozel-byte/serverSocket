@@ -3,9 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -18,26 +16,29 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
-      <Text layoutX="355.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
-      <Text fx:id="ganadosServer" layoutX="565.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
-      <Text fx:id="nameUser" fill="#2265f5" layoutX="356.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ozel">
+      <Text layoutX="228.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
+      <Text fx:id="ganadosServer" layoutX="434.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="puntos" />
+      <Text fx:id="nameUser" fill="#2265f5" layoutX="229.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ozel">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#174be8" layoutX="551.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="servidor">
+      <Text fill="#174be8" layoutX="420.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="servidor">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <ListView fx:id="listmsj" layoutY="51.0" prefHeight="364.0" prefWidth="282.0" />
-      <TextField fx:id="campomsj" layoutY="414.0" prefHeight="45.0" prefWidth="180.0" promptText="write a message" style="-fx-background-color: #fff;" />
-      <Button layoutX="180.0" layoutY="414.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #206aec;" text="enviar" textFill="WHITE" />
       <Button layoutX="309.0" layoutY="409.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="118.0" style="-fx-background-color: #5ee775;" text="finalizar turno" textFill="WHITE" />
-      <CheckBox fx:id="checkO" layoutX="571.0" layoutY="417.0" mnemonicParsing="false" text="o" />
-      <CheckBox fx:id="checkx" layoutX="624.0" layoutY="417.0" mnemonicParsing="false" text="x" />
-      <Label fx:id="msjTurno" alignment="CENTER" layoutX="97.0" layoutY="12.0" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #2dc915;" text="Tu Turno" textFill="WHITE" visible="false" />
-      <Pane fx:id="areajuego" layoutX="355.0" layoutY="60.0" prefHeight="335.0" prefWidth="310.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
+      <CheckBox fx:id="checkO" layoutX="608.0" layoutY="174.0" mnemonicParsing="false" text="o" textFill="#192ae8">
+         <font>
+            <Font size="17.0" />
+         </font></CheckBox>
+      <CheckBox fx:id="checkx" layoutX="608.0" layoutY="210.0" mnemonicParsing="false" text="x" textFill="#17ae2c">
+         <font>
+            <Font size="17.0" />
+         </font></CheckBox>
+      <Label fx:id="msjTurno" alignment="CENTER" layoutX="54.0" layoutY="206.0" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: #3085f1;" text="Tu Turno" textFill="WHITE" visible="false" />
+      <Pane fx:id="areajuego" layoutX="200.0" layoutY="60.0" prefHeight="335.0" prefWidth="310.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
          <children>
             <Line endX="199.0" layoutX="111.0" layoutY="107.0" startX="-111.0" stroke="#8a8888" />
             <Line endX="199.0" layoutX="111.0" layoutY="217.0" startX="-111.0" stroke="#838383" />
@@ -151,6 +152,7 @@
             </DropShadow>
          </effect>
       </Pane>
+      <Text fill="#1e33cd" layoutX="562.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleciona uno" />
       <AnchorPane fx:id="fondoloading" layoutX="-2.0" layoutY="-2.0" prefHeight="465.0" prefWidth="695.0" style="-fx-background-color: #fff;">
          <children>
             <Text layoutX="200.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esperando Usuario">

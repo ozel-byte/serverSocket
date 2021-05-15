@@ -1,5 +1,6 @@
 package sample.controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -22,6 +23,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -30,11 +32,7 @@ public class Controller implements Observer {
     @FXML
     private Pane areajuego;
 
-    @FXML
-    private ListView<?> listmsj;
 
-    @FXML
-    private TextField campomsj;
 
     @FXML
     private Text nameUser;
@@ -42,8 +40,7 @@ public class Controller implements Observer {
 
     @FXML
     private Text puntosuser;
-    @FXML
-    private Text turno;
+
 
     @FXML
     private Text ganadosServer;
@@ -140,12 +137,17 @@ public class Controller implements Observer {
     @FXML
     private Label msjTurno;
 
+    Integer auxTurnos = 0;
+    Boolean bandera = false;
+    Boolean startBandera = false;
 
-
+    ArrayList<String> casillas = new ArrayList<String>();
     ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
 
     @FXML
     private void initialize(){
+
+        enviar();
 
         try {
             checkx.setDisable(true);
@@ -169,21 +171,75 @@ public class Controller implements Observer {
     }
 
     public void enviar(){
+
+
+
+        for (int i=0; i<areajuego.getChildren().size(); i++){
+            if (areajuego.getChildren().get(i) instanceof Pane){
+                int finalI = i;
+                areajuego.getChildren().get(i).setOnMouseClicked(mouseEvent -> {
+                    System.out.println( areajuego.getChildren().get(finalI).getId());
+                    areajuego.getChildren().get(finalI).setVisible(false);
+                    int contador = 0;
+                    if (checkx.isSelected() && !checkO.isSelected()){
+                        String valorX = "valorX"+areajuego.getChildren().get(finalI).getId().charAt(areajuego.getChildren().get(finalI).getId().length()-1);
+                        while(contador < areajuego.getChildren().size()){
+                            if (areajuego.getChildren().get(contador) instanceof Text){
+                                    if (areajuego.getChildren().get(contador).getId().equals(valorX)){
+                                        areajuego.getChildren().get(contador).setVisible(true);
+                                        sendDataCliente(areajuego.getChildren().get(contador).getId());
+                                        bandera=true;
+                                    }
+                            }
+                            contador++;
+                        }
+                    }else if(checkO.isSelected() && !checkx.isSelected()){
+                        int contador2=0;
+                        String valorO = "valorO"+areajuego.getChildren().get(finalI).getId().charAt(areajuego.getChildren().get(finalI).getId().length()-1);
+                        while(contador2 < areajuego.getChildren().size()){
+                            if (areajuego.getChildren().get(contador2) instanceof Text){
+                                if (areajuego.getChildren().get(contador2).getId().equals(valorO)){
+                                    areajuego.getChildren().get(contador2).setVisible(true);
+                                    sendDataCliente(areajuego.getChildren().get(contador2).getId());
+                                    bandera=false;
+                                }
+                            }
+                            contador2++;
+                        }
+                    }else{
+                        System.out.println("selecione el check correspondiente");
+                    }
+
+                });
+            }
+        }
+
+
+    }
+
+    public void sendDataCliente(String valor){
         try {
-            Socket socket =  new Socket("ip",3002);
+            Socket socket =  new Socket("192.168.0.11",3004);
             DataOutputStream data = new DataOutputStream(socket.getOutputStream());
-            turno.setText("Turno del otro usuario");
-            turno.setFill(Color.GREEN);
-            data.writeUTF("true");
+            msjTurno.setText("Tu turno Acabo");
+            msjTurno.setStyle("-fx-background-color: #C70039");
+            data.writeUTF(valor);
             data.close();
+            startBandera=true;
+            bloquearcheckBox();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    public void bloquearcheckBox(){
+        checkx.setSelected(false);
+        checkO.setSelected(false);
+        checkO.setDisable(true);
+        checkx.setDisable(true);
+    }
 
     @Override
     public void update(Observable observable, Object o) {
-        System.out.println("lelgio hasta qui update");
         String objectId= "0";
         try {
             Socket data = (Socket) o;
@@ -192,7 +248,8 @@ public class Controller implements Observer {
             objectId = inputStream.readUTF();
             System.out.println(objectId);
             inputStream.close();
-            listenerPane(objectId);
+            String finalObjectId = objectId;
+            Platform.runLater(() ->  listenerPane(finalObjectId));
         } catch (IOException  e) {
             e.printStackTrace();
         }
@@ -202,6 +259,8 @@ public class Controller implements Observer {
 
 
     public void listenerPane(String valor){
+        msjTurno.setText("Tu turno");
+        msjTurno.setStyle("-fx-background-color: green");
         Integer contador=0;
         for (int i=0; i<areajuego.getChildren().size(); i++){
             if (areajuego.getChildren().get(i) instanceof Text){
@@ -213,7 +272,17 @@ public class Controller implements Observer {
                            if (areajuego.getChildren().get(contador).getId().equals(nombreaux)){
                                areajuego.getChildren().get(contador).setVisible(false);
                                areajuego.getChildren().get(i).setVisible(true);
-                               System.out.println("holaaaaaaaaaaa");
+                               msjTurno.setVisible(true);
+                              if (startBandera){
+                                  if (bandera){
+                                      checkx.setDisable(false);
+                                  }else{
+                                      checkO.setDisable(false);
+                                  }
+                              }else {
+                                  checkx.setDisable(false);
+                                  checkO.setDisable(false);
+                              }
                            }
                        }
                        contador++;
@@ -226,41 +295,8 @@ public class Controller implements Observer {
 
     }
 
-    public Boolean verificarValor(String valor ,String valorid){
-        return valor.equals(valorid) ? true : false;
-    }
 
 
-    public void checkBoxListening(Text valorO, Text valorX,Pane cuadricula){
-        if (checkO.isSelected() && !checkx.isSelected()){
-            valorO.setVisible(true);
-            valorX.setVisible(false);
-            cuadricula.setVisible(false);
-            try {
-                Socket socket = new Socket("ip",3003);
-                DataOutputStream dataPosicion = new DataOutputStream(socket.getOutputStream());
-                dataPosicion.writeUTF(valorO.getId());
-                dataPosicion.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-        }else if (checkx.isSelected() && !checkO.isSelected()){
-            System.out.println("segun if x");
-            valorO.setVisible(false);
-            valorX.setVisible(true);
-            cuadricula.setVisible(false);
-            try {
-                Socket socket = new Socket("ip",3003);
-                DataOutputStream dataPosicion = new DataOutputStream(socket.getOutputStream());
-                dataPosicion.writeUTF(valorX.getId());
-                dataPosicion.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
-            System.out.println("error");
-        }
-    }
 
 }
